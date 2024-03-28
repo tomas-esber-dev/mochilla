@@ -1,13 +1,13 @@
 //
-//  mochilla_hackathonUITests.swift
-//  mochilla-hackathonUITests
+//  mochillaUITests.swift
+//  mochillaUITests
 //
 //  Created by Tomas Esber on 3/28/24.
 //
 
 import XCTest
 
-final class mochilla_hackathonUITests: XCTestCase {
+final class mochillaUITests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.

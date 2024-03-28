@@ -1,13 +1,13 @@
 //
-//  mochilla_hackathonUITestsLaunchTests.swift
-//  mochilla-hackathonUITests
+//  mochillaUITestsLaunchTests.swift
+//  mochillaUITests
 //
 //  Created by Tomas Esber on 3/28/24.
 //
 
 import XCTest
 
-final class mochilla_hackathonUITestsLaunchTests: XCTestCase {
+final class mochillaUITestsLaunchTests: XCTestCase {
 
     override class var runsForEachTargetApplicationUIConfiguration: Bool {
         true
