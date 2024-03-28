@@ -8,24 +8,24 @@
 import Foundation
 import FirebaseAuth
 
+struct AuthDataResultModel {
+    let uid: String
+    let email: String?
+    let photoUrl: String?
+    
+    init(user: User) {
+        self.uid = user.uid
+        self.email = user.email
+        self.photoUrl = user.photoURL?.absoluteString
+    }
+}
+
 // Singleton Design Patterns
 // https://www.oodesign.com/singleton-pattern
 final class AuthenticationManager {
     
     static let shared = AuthenticationManager()
     private init() {}
-    
-    struct AuthDataResultModel {
-        let uid: String
-        let email: String?
-        let photoUrl: String?
-        
-        init(user: User) {
-            self.uid = user.uid
-            self.email = user.email
-            self.photoUrl = user.photoURL?.absoluteString
-        }
-    }
     
     // get existing authenticated user from firebase
     // looking locally for the user (doesn't use async, no API call)
