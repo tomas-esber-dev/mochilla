@@ -17,6 +17,7 @@ struct RootView: View {
             if !showSignInView {
                 NavigationStack {
                     ProfileView(showSignInView: $showSignInView)
+                        .environmentObject(courseLoader)
                 }
             }
         }

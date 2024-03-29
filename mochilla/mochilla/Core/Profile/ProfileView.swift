@@ -25,18 +25,34 @@ struct ProfileView: View {
     @EnvironmentObject var courseLoader: CourseLoader
     
     var body: some View {
-        List {
-            if let user = viewModel.user {
-                Text("UserId: \(user.userId)")
-                
-                if let email = user.email {
-                    Text("User Email: \(email)")
+        TabView {
+            SearchCourseView()
+                .environmentObject(courseLoader)
+                .tabItem {
+                    Image(systemName: "1.square.fill")
+                    Text("Search Courses")
+                }
+            Text("Liked Courses")
+                .tabItem {
+                    Image(systemName: "1.square.fill")
+                    Text("Liked Courses")
+                }
+            List {
+                if let user = viewModel.user {
+                    Text("UserId: \(user.userId)")
+                    
+                    if let email = user.email {
+                        Text("User Email: \(email)")
+                    }
                 }
             }
-            CourseView()
-        }
-        .task {
-            try? await viewModel.loadCurrentUser()
+            .tabItem {
+                Image(systemName: "2.square.fill")
+                Text("Recommended")
+            }
+            .task {
+                try? await viewModel.loadCurrentUser()
+            }
         }
         .navigationTitle("Profile")
         .toolbar {

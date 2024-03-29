@@ -11,6 +11,8 @@ struct CourseView: View {
     
     @EnvironmentObject var courseLoader: CourseLoader
     
+    var courseName : String
+    
     var body: some View {
         ScrollView {
             switch courseLoader.state {
@@ -21,13 +23,13 @@ struct CourseView: View {
                 Text(courses.courseSummary.description)
             }
         }
-        .task { await courseLoader.loadCourseData(subject: "AAAS")}
+        .task { await courseLoader.loadCourseData(subject: courseName)}
     }
 }
 
 struct CourseView_Previews: PreviewProvider {
     static var previews: some View {
-        CourseView()
+        CourseView(courseName: "AAAS")
             .environmentObject(CourseLoader(apiClient: MockCoursesAPIClient()))
     }
 }

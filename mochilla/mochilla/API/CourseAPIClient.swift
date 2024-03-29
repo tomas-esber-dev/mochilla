@@ -17,7 +17,7 @@ struct CoursesAPIClient: CourseAPI, APIClient {
   let session: URLSession = .shared
 
     func fetchCourses(subject: String) async throws -> CourseSummaries {
-    let path = CoursesEndpoint.path(queryType: .subject)
+    let path = CoursesEndpoint.path(courseType: subject)
     let response: CoursesResponse = try await performRequest(url: path)
         return response.ssrGetCoursesResp.courseSearchResult.subjects.subject.courseSummaries
   }
