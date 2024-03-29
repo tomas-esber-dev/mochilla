@@ -10,6 +10,7 @@ import SwiftUI
 struct RootView: View {
     
     @State private var showSignInView: Bool = false
+    @EnvironmentObject var courseLoader: CourseLoader
     
     var body: some View {
         ZStack {
@@ -35,5 +36,6 @@ struct RootView: View {
 struct RootView_Previews: PreviewProvider {
     static var previews: some View {
         RootView()
+            .environmentObject(CourseLoader(apiClient: MockCoursesAPIClient()))
     }
 }
