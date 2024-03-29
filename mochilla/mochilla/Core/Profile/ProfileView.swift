@@ -22,6 +22,7 @@ struct ProfileView: View {
     
     @StateObject private var viewModel = ProfileViewModel()
     @Binding var showSignInView: Bool
+    @EnvironmentObject var courseLoader: CourseLoader
     
     var body: some View {
         List {
@@ -32,7 +33,7 @@ struct ProfileView: View {
                     Text("User Email: \(email)")
                 }
             }
-            
+            CourseView()
         }
         .task {
             try? await viewModel.loadCurrentUser()
@@ -55,6 +56,7 @@ struct ProfileView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
             ProfileView(showSignInView: .constant(false))
+                .environmentObject(CourseLoader(apiClient: MockCoursesAPIClient()))
         }
     }
 }

@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		6174F6252BB5FBDD005EB752 /* mochillaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6174F6242BB5FBDD005EB752 /* mochillaApp.swift */; };
-		6174F6272BB5FBDD005EB752 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6174F6262BB5FBDD005EB752 /* ContentView.swift */; };
 		6174F6292BB5FBE0005EB752 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6174F6282BB5FBE0005EB752 /* Assets.xcassets */; };
 		6174F62C2BB5FBE0005EB752 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6174F62B2BB5FBE0005EB752 /* Preview Assets.xcassets */; };
 		6174F6362BB5FBE0005EB752 /* mochillaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6174F6352BB5FBE0005EB752 /* mochillaTests.swift */; };
@@ -30,6 +29,14 @@
 		619C40FA2BB62BA6005A89D5 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 619C40F92BB62BA6005A89D5 /* SettingsView.swift */; };
 		619C40FC2BB62EC6005A89D5 /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 619C40FB2BB62EC6005A89D5 /* AuthenticationViewModel.swift */; };
 		619C40FF2BB63212005A89D5 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 619C40FE2BB63212005A89D5 /* UserManager.swift */; };
+		619C41022BB63F36005A89D5 /* NeighborsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 619C41012BB63F36005A89D5 /* NeighborsModel.swift */; };
+		619C414B2BB741EB005A89D5 /* CourseLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 619C414A2BB741EB005A89D5 /* CourseLoader.swift */; };
+		619C414D2BB74200005A89D5 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 619C414C2BB74200005A89D5 /* APIClient.swift */; };
+		619C414F2BB74217005A89D5 /* CourseAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 619C414E2BB74217005A89D5 /* CourseAPIClient.swift */; };
+		619C41512BB7422E005A89D5 /* CoursesEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 619C41502BB7422E005A89D5 /* CoursesEndpoint.swift */; };
+		619C41532BB7423F005A89D5 /* Call.swift in Sources */ = {isa = PBXBuildFile; fileRef = 619C41522BB7423F005A89D5 /* Call.swift */; };
+		619C41552BB74343005A89D5 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 619C41542BB74343005A89D5 /* APIError.swift */; };
+		619C41572BB744E8005A89D5 /* CourseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 619C41562BB744E7005A89D5 /* CourseView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,7 +59,6 @@
 /* Begin PBXFileReference section */
 		6174F6212BB5FBDD005EB752 /* mochilla.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mochilla.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6174F6242BB5FBDD005EB752 /* mochillaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mochillaApp.swift; sourceTree = "<group>"; };
-		6174F6262BB5FBDD005EB752 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		6174F6282BB5FBE0005EB752 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6174F62B2BB5FBE0005EB752 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		6174F6312BB5FBE0005EB752 /* mochillaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = mochillaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -71,6 +77,14 @@
 		619C40F92BB62BA6005A89D5 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		619C40FB2BB62EC6005A89D5 /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
 		619C40FE2BB63212005A89D5 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
+		619C41012BB63F36005A89D5 /* NeighborsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeighborsModel.swift; sourceTree = "<group>"; };
+		619C414A2BB741EB005A89D5 /* CourseLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseLoader.swift; sourceTree = "<group>"; };
+		619C414C2BB74200005A89D5 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		619C414E2BB74217005A89D5 /* CourseAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseAPIClient.swift; sourceTree = "<group>"; };
+		619C41502BB7422E005A89D5 /* CoursesEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoursesEndpoint.swift; sourceTree = "<group>"; };
+		619C41522BB7423F005A89D5 /* Call.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Call.swift; sourceTree = "<group>"; };
+		619C41542BB74343005A89D5 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
+		619C41562BB744E7005A89D5 /* CourseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,9 +142,10 @@
 			isa = PBXGroup;
 			children = (
 				6174F6242BB5FBDD005EB752 /* mochillaApp.swift */,
-				6174F6262BB5FBDD005EB752 /* ContentView.swift */,
+				619C41492BB741DB005A89D5 /* API */,
 				619C40FD2BB631D1005A89D5 /* Firestore */,
 				6174F6692BB6266F005EB752 /* Core */,
+				619C41002BB63F1D005A89D5 /* NeighborsSearch */,
 				6174F65A2BB60354005EB752 /* Authentication */,
 				6174F6282BB5FBE0005EB752 /* Assets.xcassets */,
 				6174F6552BB600A8005EB752 /* GoogleService-Info.plist */,
@@ -183,6 +198,7 @@
 			isa = PBXGroup;
 			children = (
 				6174F6612BB60EE3005EB752 /* RootView.swift */,
+				619C41582BB744EF005A89D5 /* Courses */,
 				6174F66D2BB62740005EB752 /* Authentication */,
 				6174F6712BB627EC005EB752 /* Profile */,
 				6174F66A2BB62695005EB752 /* Settings */,
@@ -232,6 +248,35 @@
 				619C40FE2BB63212005A89D5 /* UserManager.swift */,
 			);
 			path = Firestore;
+			sourceTree = "<group>";
+		};
+		619C41002BB63F1D005A89D5 /* NeighborsSearch */ = {
+			isa = PBXGroup;
+			children = (
+				619C41012BB63F36005A89D5 /* NeighborsModel.swift */,
+			);
+			path = NeighborsSearch;
+			sourceTree = "<group>";
+		};
+		619C41492BB741DB005A89D5 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				619C414A2BB741EB005A89D5 /* CourseLoader.swift */,
+				619C414C2BB74200005A89D5 /* APIClient.swift */,
+				619C414E2BB74217005A89D5 /* CourseAPIClient.swift */,
+				619C41502BB7422E005A89D5 /* CoursesEndpoint.swift */,
+				619C41522BB7423F005A89D5 /* Call.swift */,
+				619C41542BB74343005A89D5 /* APIError.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		619C41582BB744EF005A89D5 /* Courses */ = {
+			isa = PBXGroup;
+			children = (
+				619C41562BB744E7005A89D5 /* CourseView.swift */,
+			);
+			path = Courses;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -375,18 +420,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6174F6272BB5FBDD005EB752 /* ContentView.swift in Sources */,
 				6174F6732BB627FC005EB752 /* ProfileView.swift in Sources */,
+				619C414D2BB74200005A89D5 /* APIClient.swift in Sources */,
 				6174F6252BB5FBDD005EB752 /* mochillaApp.swift in Sources */,
 				6174F6622BB60EE3005EB752 /* RootView.swift in Sources */,
 				619C40FC2BB62EC6005A89D5 /* AuthenticationViewModel.swift in Sources */,
+				619C41512BB7422E005A89D5 /* CoursesEndpoint.swift in Sources */,
 				6174F65C2BB6036C005EB752 /* AuthenticationView.swift in Sources */,
 				619C40FF2BB63212005A89D5 /* UserManager.swift in Sources */,
 				619C40FA2BB62BA6005A89D5 /* SettingsView.swift in Sources */,
 				6174F6702BB627C1005EB752 /* SignInEmailViewModel.swift in Sources */,
+				619C414B2BB741EB005A89D5 /* CourseLoader.swift in Sources */,
+				619C414F2BB74217005A89D5 /* CourseAPIClient.swift in Sources */,
 				6174F6602BB6073C005EB752 /* AuthenticationManager.swift in Sources */,
+				619C41572BB744E8005A89D5 /* CourseView.swift in Sources */,
+				619C41532BB7423F005A89D5 /* Call.swift in Sources */,
+				619C41022BB63F36005A89D5 /* NeighborsModel.swift in Sources */,
 				6174F65E2BB604C4005EB752 /* SignInEmailView.swift in Sources */,
 				6174F66C2BB626CE005EB752 /* SettingsViewModel.swift in Sources */,
+				619C41552BB74343005A89D5 /* APIError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
