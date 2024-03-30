@@ -14,6 +14,11 @@ struct SignInEmailView: View {
     
     var body: some View {
         VStack {
+            Image("Mochila1")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 200, height: 200)
+//            Spacer()
             TextField("Email...", text: $viewModel.email)
                 .padding()
                 .background(Color.gray.opacity(0.4))

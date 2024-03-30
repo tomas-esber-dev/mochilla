@@ -18,9 +18,13 @@ struct ExistingCourses: View {
         VStack {
             List(viewModel.userCourses) { userCourse in
                 ForEach(userCourse.userCourses, id: \.self) { course in
-                    VStack(alignment: .leading) {
-                        Text(course.courseName)
-                        Text(course.courseCode)
+                    HStack {
+                        VStack(alignment: .leading) {
+                            Text(course.courseName)
+                            Text(course.courseCode)
+                        }
+                        Spacer()
+                        Text("\(course.rating) / 5")
                     }
                 }
             }
