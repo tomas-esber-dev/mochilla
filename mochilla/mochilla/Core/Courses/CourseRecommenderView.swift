@@ -21,8 +21,6 @@ final class CourseRecommenderViewModel: ObservableObject {
 struct CourseRecommenderView: View {
     
     //    @State var things : [String: DBUserCourses] = [:]
-    @State var distances : [UserProfile: Double] = [:]
-    @State var items : [DBCourse] = []
     @StateObject private var viewModel = CourseRecommenderViewModel()
     @StateObject var courseViewModel = CourseRecommenderModel()
     
@@ -48,15 +46,23 @@ struct CourseRecommenderView: View {
 //                        print("Error fetching courses for user: \(error)")
 //                    }
 //                }
-            Text("Length is \(viewModelForMyCourse.userCourses.count)")
-                .task {
-                    do {
-                        try await courseViewModel.calculateDistances(userId: auth ?? "trouble getting user", userCourses: viewModelForMyCourse.userCourses)
-                    } catch {
-                        print("Error fetching documents: \(error)")
-                    }
-                    courseViewModel.fetchCourses(userId: auth ?? "some more trouble here", userCourses: viewModelForMyCourse.userCourses, distanceThreshold: 1.0)
+//            Text("Length is \(courseViewModel.items.count)")
+            List(courseViewModel.items, id: \.self) { course in
+                VStack(alignment: .leading) {
+                    Text(course.courseName)
+                        .font(.headline)
+                    Text(course.courseCode)
+                        .font(.subheadline)
                 }
+            }
+            .task {
+                do {
+                    try await courseViewModel.calculateDistances(userId: auth ?? "trouble getting user", userCourses: viewModelForMyCourse.userCourses)
+                } catch {
+                    print("Error fetching documents: \(error)")
+                }
+                courseViewModel.fetchCourses(userId: auth ?? "some more trouble here", userCourses: viewModelForMyCourse.userCourses, distanceThreshold: 1.0)
+            }
         }
     }
 }
