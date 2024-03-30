@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 struct SearchCourseViewModel {
     static func listOfferings() -> [CourseOffering] {
         [

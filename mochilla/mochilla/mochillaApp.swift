@@ -12,12 +12,14 @@ import Firebase
 struct mochillaApp: App {
     
     @StateObject var courseLoader = CourseLoader(apiClient: CoursesAPIClient())
+    @StateObject var courseStore = CourseStore()
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     var body: some Scene {
         WindowGroup {
             NavigationStack {
                 RootView()
                     .environmentObject(courseLoader)
+                    .environmentObject(courseStore)
             }
         }
     }

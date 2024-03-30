@@ -11,6 +11,8 @@ struct SearchCourseView: View {
     @State private var selectedItem = 0
     @State private var showCourseListings = false
     @EnvironmentObject var courseLoader: CourseLoader
+    @EnvironmentObject var courseStore: CourseStore
+    
     let offerings = SearchCourseViewModel.listOfferings()
         
     var body: some View {
@@ -33,6 +35,7 @@ struct SearchCourseView: View {
             .navigationDestination(isPresented: $showCourseListings) {
                 CourseView(courseName: offerings[selectedItem].courseCode + " - " + offerings[selectedItem].courseName)
                     .environmentObject(courseLoader)
+                    .environmentObject(courseStore)
             }
         }
     }

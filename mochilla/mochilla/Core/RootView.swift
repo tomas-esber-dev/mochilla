@@ -11,6 +11,7 @@ struct RootView: View {
     
     @State private var showSignInView: Bool = false
     @EnvironmentObject var courseLoader: CourseLoader
+    @EnvironmentObject var courseStore: CourseStore
     
     var body: some View {
         ZStack {
@@ -18,6 +19,7 @@ struct RootView: View {
                 NavigationStack {
                     ProfileView(showSignInView: $showSignInView)
                         .environmentObject(courseLoader)
+                        .environmentObject(courseStore)
                 }
             }
         }
@@ -38,5 +40,6 @@ struct RootView_Previews: PreviewProvider {
     static var previews: some View {
         RootView()
             .environmentObject(CourseLoader(apiClient: MockCoursesAPIClient()))
+            .environmentObject(CourseStore())
     }
 }

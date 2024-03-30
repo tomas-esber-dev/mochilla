@@ -23,11 +23,13 @@ struct ProfileView: View {
     @StateObject private var viewModel = ProfileViewModel()
     @Binding var showSignInView: Bool
     @EnvironmentObject var courseLoader: CourseLoader
+    @EnvironmentObject var courseStore: CourseStore
     
     var body: some View {
         TabView {
             SearchCourseView()
                 .environmentObject(courseLoader)
+                .environmentObject(courseStore)
                 .tabItem {
                     Image(systemName: "1.square.fill")
                     Text("Search Courses")
