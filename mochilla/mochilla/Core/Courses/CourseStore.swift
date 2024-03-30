@@ -16,4 +16,8 @@ class CourseStore: ObservableObject {
             courses.append(courseModel)
         }
     }
+    
+    func wipeCourseStore() {
+        courses.removeAll()
+    }
 }

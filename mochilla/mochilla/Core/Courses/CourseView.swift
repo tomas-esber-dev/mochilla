@@ -55,6 +55,7 @@ struct CourseListView: View {
                 .shadow(color: Color.gray.opacity(0.4), radius: 3, x: 0, y: 2)
             }
         }
+        .task { courseStore.wipeCourseStore() }
         .task { courseStore.populateCourseStore(apiCourses: courses) }
     }
 }

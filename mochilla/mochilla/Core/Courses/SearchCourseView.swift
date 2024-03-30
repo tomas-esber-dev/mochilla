@@ -32,10 +32,18 @@ struct SearchCourseView: View {
                 }
             }
             .padding()
-            .navigationDestination(isPresented: $showCourseListings) {
-                CourseView(courseName: offerings[selectedItem].courseCode + " - " + offerings[selectedItem].courseName)
-                    .environmentObject(courseLoader)
-                    .environmentObject(courseStore)
+            .sheet(isPresented: $showCourseListings, onDismiss: {
+                courseStore.wipeCourseStore()
+                showCourseListings = false
+            }) {
+                NavigationView {
+                    CourseView(courseName: offerings[selectedItem].courseCode + " - " + offerings[selectedItem].courseName)
+                        .environmentObject(courseLoader)
+                        .environmentObject(courseStore)
+                }
+                .onAppear {
+                    courseStore.wipeCourseStore()
+                }
             }
         }
     }
@@ -45,5 +53,6 @@ struct SearchCourseView_Previews: PreviewProvider {
     static var previews: some View {
         SearchCourseView()
             .environmentObject(CourseLoader(apiClient: MockCoursesAPIClient()))
+            .environmentObject(CourseStore())
     }
 }

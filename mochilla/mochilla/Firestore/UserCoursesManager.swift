@@ -25,26 +25,55 @@ class UserCoursesManagerModel: ObservableObject {
     @Published var userCourses: [DBUserCourses] = []
     private var db = Firestore.firestore()
     
-    func fetchData() {
-        db.collection("userCourses").getDocuments { snapshot, error in
+    func fetchData(forUserID userID: String) {
+        // Create a reference to the document with the specified userID in the "userCourses" collection
+        let userDocRef = db.collection("userCourses").document(userID)
+        
+        // Fetch the document for the specified user
+        userDocRef.getDocument { document, error in
             if let error = error {
-                print("Error fetching documents: \(error)")
+                print("Error fetching document: \(error)")
                 return
             }
-            if let documents = snapshot?.documents {
-                self.userCourses = documents.compactMap { document in
-                    do {
-                        let userCourses = try document.data(as: DBUserCourses.self)
-                        print(userCourses)
-                        return userCourses
-                    } catch {
-                        print("Error decoding user courses: \(error)")
-                        return nil
-                    }
+            
+            if let document = document, document.exists {
+                do {
+                    // Decode the userCourses data from Firestore
+                    let userCourses = try document.data(as: DBUserCourses.self)
+                    print(userCourses)
+                    // Update the userCourses property with the fetched data
+                    self.userCourses = [userCourses]
+                } catch {
+                    print("Error decoding user courses: \(error)")
                 }
+            } else {
+                print("Document for user does not exist")
             }
         }
     }
+
+    
+//    func fetchData(toUserWithID userID: String) {
+//
+//        db.collection("userCourses").getDocuments { snapshot, error in
+//            if let error = error {
+//                print("Error fetching documents: \(error)")
+//                return
+//            }
+//            if let documents = snapshot?.documents {
+//                self.userCourses = documents.compactMap { document in
+//                    do {
+//                        let userCourses = try document.data(as: DBUserCourses.self)
+//                        print(userCourses)
+//                        return userCourses
+//                    } catch {
+//                        print("Error decoding user courses: \(error)")
+//                        return nil
+//                    }
+//                }
+//            }
+//        }
+//    }
     
     func addCourse(course: DBCourse, toUserWithID userID: String) {
         // Create a reference to the user's document in the "userCourses" collection

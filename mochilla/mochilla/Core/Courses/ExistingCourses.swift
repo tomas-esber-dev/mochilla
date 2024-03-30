@@ -10,6 +10,8 @@ import SwiftUI
 struct ExistingCourses: View {
     
     @ObservedObject var viewModel = UserCoursesManagerModel()
+    
+    let auth = try? AuthenticationManager.shared.getAuthenticatedUser().uid
 
     var body: some View {
         VStack {
@@ -22,7 +24,7 @@ struct ExistingCourses: View {
                 }
             }
             .onAppear {
-                viewModel.fetchData()
+                viewModel.fetchData(forUserID: auth ?? "53rXnyFvnhPX6S4MQAPfa7HscJ92")
             }
         }
     }

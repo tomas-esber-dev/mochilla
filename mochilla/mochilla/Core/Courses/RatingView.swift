@@ -34,7 +34,7 @@ struct RatingView: View {
                     .foregroundColor(number > rating ? offColor : onColor)
                     .onTapGesture {
                         rating = number
-                        viewModel.addCourse(course: DBCourse(courseName: course.subject, courseCode: course.catalogNumber, rating: course.rating), toUserWithID: auth ?? "")
+                        viewModel.addCourse(course: DBCourse(courseName: course.subject, courseCode: course.catalogNumber, rating: rating), toUserWithID: auth ?? "53rXnyFvnhPX6S4MQAPfa7HscJ92")
                     }
             }
         }
