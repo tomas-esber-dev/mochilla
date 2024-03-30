@@ -32,7 +32,7 @@ struct ProfileView: View {
                     Image(systemName: "1.square.fill")
                     Text("Search Courses")
                 }
-            Text("Liked Courses")
+            ExistingCourses()
                 .tabItem {
                     Image(systemName: "1.square.fill")
                     Text("Liked Courses")

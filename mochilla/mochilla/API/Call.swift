@@ -55,19 +55,21 @@ struct Subject: Codable {
     }
 }
 
-struct CourseSummaries: Codable {
+struct CourseSummaries: Codable, Hashable {
     let courseSummary: [CourseSummary]
+    let id = UUID()
     
     enum CodingKeys: String, CodingKey {
         case courseSummary = "course_summary"
     }
 }
 
-struct CourseSummary: Codable {
+struct CourseSummary: Codable, Hashable {
     let subject: String
     let subjectLovDescr: String
     let catalogNbr: String
     let effdt: String
+    let id = UUID()
     
     enum CodingKeys: String, CodingKey {
         case subject
