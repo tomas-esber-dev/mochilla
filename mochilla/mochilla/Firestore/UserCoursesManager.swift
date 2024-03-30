@@ -36,10 +36,13 @@ class UserCoursesManagerModel: ObservableObject {
                 return
             }
             
+            print("going to fetch ur course user \(userID)")
+            
             if let document = document, document.exists {
                 do {
                     // Decode the userCourses data from Firestore
                     let userCourses = try document.data(as: DBUserCourses.self)
+                    print("here they are user \(userID): \(userCourses)")
                     // Update the userCourses property with the fetched data
                     self.userCourses = [userCourses]
                 } catch {

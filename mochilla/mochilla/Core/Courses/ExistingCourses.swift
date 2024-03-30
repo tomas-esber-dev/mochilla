@@ -9,7 +9,8 @@ import SwiftUI
 
 struct ExistingCourses: View {
     
-    @ObservedObject var viewModel = UserCoursesManagerModel()
+//    @ObservedObject var viewModel = UserCoursesManagerModel()
+    @ObservedObject var viewModel : UserCoursesManagerModel
     
     let auth = try? AuthenticationManager.shared.getAuthenticatedUser().uid
 
@@ -24,7 +25,7 @@ struct ExistingCourses: View {
                 }
             }
             .onAppear {
-                viewModel.fetchData(forUserID: auth ?? "53rXnyFvnhPX6S4MQAPfa7HscJ92")
+                viewModel.fetchData(forUserID: auth ?? "trouble getting user")
             }
         }
     }
@@ -32,6 +33,6 @@ struct ExistingCourses: View {
 
 struct ExistingCourses_Previews: PreviewProvider {
     static var previews: some View {
-        ExistingCourses()
+        ExistingCourses(viewModel: UserCoursesManagerModel())
     }
 }

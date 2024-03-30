@@ -23,21 +23,20 @@ class RecommendedCourses {
     
     
     // for user0, returns: [user1: 0.75, user2: 0.56, ... , user9: 0.72]
-    func calculateDistanceFromNeighbors(userId: String) async -> Task<[UserProfile : Double], Never> {
+    func calculateDistanceFromNeighbors(userId: String, userCourses: [DBUserCourses]) async -> Task<[UserProfile : Double], Never> {
         Task {
             do {
-                let userCourses = managerModel.fetchData(forUserID: userId)
-                
+                print("courses for this user are : \(userCourses)")
                 var my_ratings : [DBCourse] = []
-                for userCourse in managerModel.userCourses {
+                for userCourse in userCourses {
                     for course in userCourse.userCourses {
                         let my_db_course = DBCourse(courseName: course.courseName, courseCode: course.courseCode, rating: course.rating)
                         my_ratings.append(my_db_course)
                     }
                 }
-                
                 let userProfile = UserProfile(userId: userId, ratings: my_ratings)
                 print("my user profile is : \(userProfile)")
+                print(" ")
                 
                 var user_distances : [UserProfile: Double] = [:]
                 let userToCourses = try await fetchAllDocuments()
@@ -54,12 +53,12 @@ class RecommendedCourses {
                     if let userCourses = userToCourses[user_id] {
                         for i in 0..<userCourses.userCourses.count {
                             let course = userCourses.userCourses[i]
-                            print("Course id is \(course.courseCode)")
+//                            print("Course id is \(course.courseCode)")
                             for my_course in userProfile.ratings {
                                 let my_str = my_course.courseName.trimmingCharacters(in: .whitespacesAndNewlines) + my_course.courseCode.trimmingCharacters(in: .whitespacesAndNewlines)
                                 let other_str = course.courseName.trimmingCharacters(in: .whitespacesAndNewlines) + course.courseCode.trimmingCharacters(in: .whitespacesAndNewlines)
                                 if my_str == other_str {
-                                    print("Overlapping Course is \(my_str)")
+//                                    print("Overlapping Course is \(my_str)")
                                     top_calculation += Double(course.rating * my_course.rating)
                                     my_ratings_calculation += Double(my_course.rating * my_course.rating)
                                     their_ratings_calculation += Double(course.rating * course.rating)
@@ -76,8 +75,8 @@ class RecommendedCourses {
                     user_distances[other_profile] = distance
                 }
                 // Use fetched data here
-                print("user to courses : \(userToCourses)")
-                print("user distances : \(user_distances)")
+//                print("user to courses : \(userToCourses)")
+//                print("user distances : \(user_distances)")
                 return user_distances
             } catch {
                 print("Error fetching documents: \(error)")
@@ -87,12 +86,24 @@ class RecommendedCourses {
     }
     
     // returns: [Course(ENG101), Course(CS308), Course(MATH230)]
-    func fetchCourses(userProfile: UserProfile, userList: [UserProfile: Double], distanceThreshhold: Double) -> [DBCourse] {
-        
+    func fetchCourses(userId: String, myUserCourses: [DBUserCourses], userList: [UserProfile: Double], distanceThreshhold: Double) -> [DBCourse] {
+                
+        print("courses for this user are : \(myUserCourses)")
+        var my_ratings : [DBCourse] = []
+        for userCourse in myUserCourses {
+            for course in userCourse.userCourses {
+                let my_db_course = DBCourse(courseName: course.courseName, courseCode: course.courseCode, rating: course.rating)
+                my_ratings.append(my_db_course)
+            }
+        }
+        let userProfile = UserProfile(userId: userId, ratings: my_ratings)
+        print("my user profile is : \(userProfile)")
+        print(" ")
+                
         var courseList : [DBCourse] = []
-        print("userList is : \(userList)")
+//        print("userList is : \(userList)")
         for user_profile in userList.keys {
-            print(user_profile)
+//            print(user_profile)
             if let distance = userList[user_profile] {
                 if distance <= distanceThreshhold {
                     for other_course in user_profile.ratings {
@@ -103,7 +114,7 @@ class RecommendedCourses {
                 }
             }
         }
-        print("course list is : \(courseList)")
+        print("your recommended course list user \(userId) is : \(courseList)")
         return courseList
     }
     

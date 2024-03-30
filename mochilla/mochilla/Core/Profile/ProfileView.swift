@@ -25,6 +25,8 @@ struct ProfileView: View {
     @EnvironmentObject var courseLoader: CourseLoader
     @EnvironmentObject var courseStore: CourseStore
     
+    @ObservedObject var viewModelForCourse = UserCoursesManagerModel()
+    
     var body: some View {
         TabView {
             SearchCourseView()
@@ -34,7 +36,7 @@ struct ProfileView: View {
                     Image(systemName: "1.square.fill")
                     Text("Search Courses")
                 }
-            ExistingCourses()
+            ExistingCourses(viewModel: viewModelForCourse)
                 .tabItem {
                     Image(systemName: "2.square.fill")
                     Text("Rated Courses")
@@ -49,7 +51,7 @@ struct ProfileView: View {
                         }
                     }
                 }
-                CourseRecommenderView()
+                CourseRecommenderView(viewModelForMyCourse: viewModelForCourse)
             }
             .tabItem {
                 Image(systemName: "3.square.fill")
