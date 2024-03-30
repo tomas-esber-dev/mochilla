@@ -24,22 +24,40 @@ struct ProfileView: View {
     @Binding var showSignInView: Bool
     @EnvironmentObject var courseLoader: CourseLoader
     @EnvironmentObject var courseStore: CourseStore
-    
+    @State private var selectedTab = 0
     @ObservedObject var viewModelForCourse = UserCoursesManagerModel()
     
     var body: some View {
-        TabView {
+        TabView(selection: $selectedTab) {
             SearchCourseView()
                 .environmentObject(courseLoader)
                 .environmentObject(courseStore)
                 .tabItem {
-                    Image(systemName: "1.square.fill")
+                    Image(systemName: "magnifyingglass")
                     Text("Search Courses")
+                }
+                .tag(0)
+                .toolbar {
+                    if selectedTab == 0 {
+                        ToolbarItem(placement: .navigationBarLeading) {
+                            Text("Search For Courses")
+                                .font(.largeTitle)
+                        }
+                    }
                 }
             ExistingCourses(viewModel: viewModelForCourse)
                 .tabItem {
-                    Image(systemName: "2.square.fill")
+                    Image(systemName: "list.bullet")
                     Text("Rated Courses")
+                }
+                .tag(1)
+                .toolbar {
+                    if selectedTab == 1 {
+                        ToolbarItem(placement: .navigationBarLeading) {
+                            Text("Your Rated Courses")
+                                .font(.largeTitle)
+                        }
+                    }
                 }
             VStack {
                 List {
@@ -54,14 +72,23 @@ struct ProfileView: View {
                 CourseRecommenderView(viewModelForMyCourse: viewModelForCourse)
             }
             .tabItem {
-                Image(systemName: "3.square.fill")
+                Image(systemName: "star.fill")
                 Text("Recommended")
             }
+            .tag(2)
             .task {
                 try? await viewModel.loadCurrentUser()
             }
+            .toolbar {
+                if selectedTab == 2 {
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        Text("Recommendations")
+                            .font(.largeTitle)
+                    }
+                }
+            }
         }
-        .navigationTitle("Profile")
+        .navigationTitle("Mochila")
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 NavigationLink {

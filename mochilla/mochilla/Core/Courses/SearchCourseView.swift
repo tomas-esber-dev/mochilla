@@ -25,10 +25,10 @@ struct SearchCourseView: View {
                 }
                 .pickerStyle(MenuPickerStyle())
                 
-                Text("You selected: \(offerings[selectedItem].courseName)")
-                    .padding()
+//                Text("You selected: \(offerings[selectedItem].courseName)")
+//                    .padding()
                 Button(action: {showCourseListings = true}) {
-                    Text("Button")
+                    Text("Find Courses")
                 }
             }
             .padding()
