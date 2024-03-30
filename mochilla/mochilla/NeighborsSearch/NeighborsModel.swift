@@ -16,13 +16,29 @@ struct UserProfile: Hashable {
 
 class RecommendedCourses {
     
+    let managerModel = UserCoursesManagerModel()
     var recommendedCourses: [DBCourse] = []
     private var db = Firestore.firestore()
     
+    
+    
     // for user0, returns: [user1: 0.75, user2: 0.56, ... , user9: 0.72]
-    func calculateDistanceFromNeighbors(userProfile: UserProfile) async -> Task<[UserProfile : Double], Never> {
+    func calculateDistanceFromNeighbors(userId: String) async -> Task<[UserProfile : Double], Never> {
         Task {
             do {
+                let userCourses = managerModel.fetchData(forUserID: userId)
+                
+                var my_ratings : [DBCourse] = []
+                for userCourse in managerModel.userCourses {
+                    for course in userCourse.userCourses {
+                        let my_db_course = DBCourse(courseName: course.courseName, courseCode: course.courseCode, rating: course.rating)
+                        my_ratings.append(my_db_course)
+                    }
+                }
+                
+                let userProfile = UserProfile(userId: userId, ratings: my_ratings)
+                print("my user profile is : \(userProfile)")
+                
                 var user_distances : [UserProfile: Double] = [:]
                 let userToCourses = try await fetchAllDocuments()
 //                print(userToCourses)
