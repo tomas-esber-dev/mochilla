@@ -71,6 +71,15 @@ class UserCoursesManagerModel: ObservableObject {
                     print("Error decoding or updating document: \(error)")
                 }
             } else {
+                // Document doesn't exist, so create a new document with the new course
+                let newUserCourses = DBUserCourses(id: userID, userCourses: [course])
+                
+                do {
+                    // Create a new document with the specified data
+                    try userDocRef.setData(from: newUserCourses)
+                } catch {
+                    print("Error creating new document: \(error)")
+                }
                 print("Document does not exist")
             }
         }
