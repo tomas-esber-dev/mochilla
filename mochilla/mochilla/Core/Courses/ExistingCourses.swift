@@ -16,6 +16,8 @@ struct ExistingCourses: View {
 
     var body: some View {
         VStack {
+            Text("Courses You've Rated")
+                .font(.title)
             List(viewModel.userCourses) { userCourse in
                 ForEach(userCourse.userCourses, id: \.self) { course in
                     HStack {

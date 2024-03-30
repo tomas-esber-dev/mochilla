@@ -60,15 +60,6 @@ struct ProfileView: View {
                     }
                 }
             VStack {
-                List {
-                    if let user = viewModel.user {
-                        Text("UserId: \(user.userId)")
-                        
-                        if let email = user.email {
-                            Text("User Email: \(email)")
-                        }
-                    }
-                }
                 CourseRecommenderView(viewModelForMyCourse: viewModelForCourse)
             }
             .tabItem {
@@ -83,6 +74,28 @@ struct ProfileView: View {
                 if selectedTab == 2 {
                     ToolbarItem(placement: .navigationBarLeading) {
                         Text("Recommendations")
+                            .font(.largeTitle)
+                    }
+                }
+            }
+        List {
+            if let user = viewModel.user {
+                Text("UserId: \(user.userId)")
+
+                if let email = user.email {
+                    Text("User Email: \(email)")
+                }
+            }
+            }
+        .tag(3)
+            .tabItem {
+                Image(systemName: "person.fill")
+                Text("Profile")
+            }
+            .toolbar {
+                if selectedTab == 3 {
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        Text("Profile")
                             .font(.largeTitle)
                     }
                 }

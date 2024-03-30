@@ -32,6 +32,8 @@ struct CourseRecommenderView: View {
     
     var body: some View {
         VStack {
+            Text("Courses You Might Like")
+                .font(.title)
 //            Text("hey")
 //            //            ForEach(courseViewModel.items, id: \.self) { course in
 //            //                VStack(alignment: .leading) {
@@ -48,13 +50,24 @@ struct CourseRecommenderView: View {
 //                }
 //            Text("Length is \(courseViewModel.items.count)")
             List(courseViewModel.items, id: \.self) { course in
-                VStack(alignment: .leading) {
-                    Text(course.courseName)
-                        .font(.headline)
-                    Text(course.courseCode)
-                        .font(.subheadline)
+                VStack(alignment: .trailing) {
+                    HStack {
+                        Text(course.courseName)
+                            .font(.title)
+                            .fontWeight(.bold)
+                            .foregroundColor(.blue)
+                        Text(course.courseCode)
+                            .font(.title)
+                            .foregroundColor(.gray)
+                    }
+                    .frame(maxWidth: .infinity, alignment: .leading)
                 }
+                .padding()
+                .frame(maxWidth: .infinity)
+                .background(Color.gray.opacity(0.2))
+                .cornerRadius(10)
             }
+            .listStyle(PlainListStyle())
             .task {
                 do {
                     try await courseViewModel.calculateDistances(userId: auth ?? "trouble getting user", userCourses: viewModelForMyCourse.userCourses)
