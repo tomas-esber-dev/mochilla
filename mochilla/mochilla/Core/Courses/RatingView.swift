@@ -9,6 +9,8 @@ import SwiftUI
 
 struct RatingView: View {
     @Binding var rating: Int
+    @ObservedObject var viewModel = UserCoursesManagerModel()
+    var course: Course
     
     var label = ""
     var maximumRating = 5
@@ -18,6 +20,8 @@ struct RatingView: View {
     
     var offColor = Color.gray
     var onColor = Color.yellow
+    
+    let auth = try? AuthenticationManager.shared.getAuthenticatedUser().uid
     
     var body: some View {
         HStack {
@@ -30,6 +34,7 @@ struct RatingView: View {
                     .foregroundColor(number > rating ? offColor : onColor)
                     .onTapGesture {
                         rating = number
+                        viewModel.addCourse(course: DBCourse(courseName: course.subject, courseCode: course.catalogNumber, rating: course.rating), toUserWithID: auth ?? "")
                     }
             }
         }
@@ -46,6 +51,6 @@ struct RatingView: View {
 
 struct RatingView_Previews: PreviewProvider {
     static var previews: some View {
-        RatingView(rating: .constant(3))
+        RatingView(rating: .constant(3), course: Course(subject: "Engineering", catalogNumber: "202", effectiveDate: "4-9-20", rating: 2))
     }
 }

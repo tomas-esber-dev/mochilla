@@ -18,6 +18,7 @@ struct DBCourse: Codable, Identifiable, Hashable {
     @DocumentID var id: String?
     var courseName: String
     var courseCode: String
+    var rating: Int
 }
 
 class UserCoursesManagerModel: ObservableObject {
@@ -41,6 +42,36 @@ class UserCoursesManagerModel: ObservableObject {
                         return nil
                     }
                 }
+            }
+        }
+    }
+    
+    func addCourse(course: DBCourse, toUserWithID userID: String) {
+        // Create a reference to the user's document in the "userCourses" collection
+        let userDocRef = db.collection("userCourses").document(userID)
+        
+        // Update the document with the new course added to the array
+        userDocRef.getDocument { document, error in
+            if let error = error {
+                print("Error getting document: \(error)")
+                return
+            }
+            
+            if let document = document, document.exists {
+                do {
+                    // Decode the existing userCourses array from Firestore
+                    var userCourses = try document.data(as: DBUserCourses.self)
+                    
+                    // Append the new course to the userCourses array
+                    userCourses.userCourses.append(course)
+                    
+                    // Encode the updated userCourses array and update the Firestore document
+                    try userDocRef.setData(from: userCourses)
+                } catch {
+                    print("Error decoding or updating document: \(error)")
+                }
+            } else {
+                print("Document does not exist")
             }
         }
     }

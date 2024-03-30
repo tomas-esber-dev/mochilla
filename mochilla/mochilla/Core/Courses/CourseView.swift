@@ -47,7 +47,7 @@ struct CourseListView: View {
                             .foregroundColor(.secondary)
                     }
                     Spacer()
-                    RatingView(rating: $course.rating)
+                    RatingView(rating: $course.rating, course: course)
                 }
                 .padding(EdgeInsets(top: 8, leading: 16, bottom: 8, trailing: 16))
                 .background(Color.white)
