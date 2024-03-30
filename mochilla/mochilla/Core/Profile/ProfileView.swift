@@ -36,20 +36,23 @@ struct ProfileView: View {
                 }
             ExistingCourses()
                 .tabItem {
-                    Image(systemName: "1.square.fill")
-                    Text("Liked Courses")
+                    Image(systemName: "2.square.fill")
+                    Text("Rated Courses")
                 }
-            List {
-                if let user = viewModel.user {
-                    Text("UserId: \(user.userId)")
-                    
-                    if let email = user.email {
-                        Text("User Email: \(email)")
+            VStack {
+                List {
+                    if let user = viewModel.user {
+                        Text("UserId: \(user.userId)")
+                        
+                        if let email = user.email {
+                            Text("User Email: \(email)")
+                        }
                     }
                 }
+                CourseRecommenderView()
             }
             .tabItem {
-                Image(systemName: "2.square.fill")
+                Image(systemName: "3.square.fill")
                 Text("Recommended")
             }
             .task {
@@ -75,6 +78,7 @@ struct ProfileView_Previews: PreviewProvider {
         NavigationStack {
             ProfileView(showSignInView: .constant(false))
                 .environmentObject(CourseLoader(apiClient: MockCoursesAPIClient()))
+                .environmentObject(CourseStore())
         }
     }
 }

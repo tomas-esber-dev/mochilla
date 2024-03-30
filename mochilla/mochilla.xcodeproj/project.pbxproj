@@ -44,6 +44,7 @@
 		619C41622BB7AEF0005A89D5 /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 619C41612BB7AEF0005A89D5 /* RatingView.swift */; };
 		619C41642BB7B27F005A89D5 /* CourseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 619C41632BB7B27F005A89D5 /* CourseModel.swift */; };
 		619C41662BB7B63E005A89D5 /* CourseStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 619C41652BB7B63E005A89D5 /* CourseStore.swift */; };
+		619C41682BB7DB05005A89D5 /* CourseRecommenderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 619C41672BB7DB05005A89D5 /* CourseRecommenderView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,6 +100,7 @@
 		619C41612BB7AEF0005A89D5 /* RatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingView.swift; sourceTree = "<group>"; };
 		619C41632BB7B27F005A89D5 /* CourseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseModel.swift; sourceTree = "<group>"; };
 		619C41652BB7B63E005A89D5 /* CourseStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseStore.swift; sourceTree = "<group>"; };
+		619C41672BB7DB05005A89D5 /* CourseRecommenderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseRecommenderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -296,6 +298,7 @@
 				619C41612BB7AEF0005A89D5 /* RatingView.swift */,
 				619C41632BB7B27F005A89D5 /* CourseModel.swift */,
 				619C41652BB7B63E005A89D5 /* CourseStore.swift */,
+				619C41672BB7DB05005A89D5 /* CourseRecommenderView.swift */,
 			);
 			path = Courses;
 			sourceTree = "<group>";
@@ -463,6 +466,7 @@
 				6174F65E2BB604C4005EB752 /* SignInEmailView.swift in Sources */,
 				619C41662BB7B63E005A89D5 /* CourseStore.swift in Sources */,
 				6174F66C2BB626CE005EB752 /* SettingsViewModel.swift in Sources */,
+				619C41682BB7DB05005A89D5 /* CourseRecommenderView.swift in Sources */,
 				619C41552BB74343005A89D5 /* APIError.swift in Sources */,
 				619C415E2BB78FCE005A89D5 /* UserCoursesManager.swift in Sources */,
 				619C415A2BB7602A005A89D5 /* SearchCourseView.swift in Sources */,

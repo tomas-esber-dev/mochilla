@@ -40,7 +40,6 @@ class UserCoursesManagerModel: ObservableObject {
                 do {
                     // Decode the userCourses data from Firestore
                     let userCourses = try document.data(as: DBUserCourses.self)
-                    print(userCourses)
                     // Update the userCourses property with the fetched data
                     self.userCourses = [userCourses]
                 } catch {
@@ -51,7 +50,6 @@ class UserCoursesManagerModel: ObservableObject {
             }
         }
     }
-
     
 //    func fetchData(toUserWithID userID: String) {
 //
